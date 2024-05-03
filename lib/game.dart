@@ -59,7 +59,7 @@ class Game {
         return true;
     }
 
-    if (totalPuntos >= 98) {
+    if (totalPuntos >= 99) {
       return false; // Game over
     }
     return true; // Continue playing

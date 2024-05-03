@@ -1,11 +1,15 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'game.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,16 +17,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         cardColor: Colors.lightBlueAccent,
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           bodyText2: TextStyle(color: Colors.black87),
         ),
       ),
-      home: GamePage(),
+      home: const GamePage(),
     );
   }
 }
 
 class GamePage extends StatefulWidget {
+  const GamePage({super.key});
+
   @override
   _GamePageState createState() => _GamePageState();
 }
@@ -40,7 +46,7 @@ class _GamePageState extends State<GamePage> {
       }
 
       // Retraso para la jugada de la computadora
-      Future.delayed(Duration(milliseconds: 500), () {
+      Future.delayed(const Duration(milliseconds: 500), () {
         setState(() {
           int compIndex = _game.ran.nextInt(_game.compu.length);
           bool compContinue = _game.playCard(false, compIndex);
@@ -57,11 +63,11 @@ class _GamePageState extends State<GamePage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Game Over'),
+            title: const Text('Game Over'),
             content: Text(message),
             actions: <Widget>[
               TextButton(
-                child: Text('Jugar de nuevo'),
+                child: const Text('Jugar de nuevo'),
                 onPressed: () {
                   Navigator.of(context).pop();
                   setState(() {
@@ -79,20 +85,20 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mini ONO Game'),
+        title: const Text('Mini ONO Game'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text('Total de Puntos: ${_game.totalPuntos}',
-                style: TextStyle(fontSize: 40, color: Colors.red)),
+                style: const TextStyle(fontSize: 40, color: Colors.red)),
           ),
           Expanded(
             child: Column(
               children: [
-                Text('Usuario', style: TextStyle
+                const Text('Usuario', style: TextStyle
                   (fontSize: 25, color: Colors.purple
                 ),),
                 Expanded(
@@ -107,17 +113,17 @@ class _GamePageState extends State<GamePage> {
                           child: Container(
                             alignment: Alignment.center,
                             width: 120, // Aumentado el ancho
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 20, horizontal: 8), // Aumentado el padding
                             child: Text(_game.player[index].toString(),
-                                style: TextStyle(fontSize: 18)),
+                                style: const TextStyle(fontSize: 18)),
                           ),
                         ),
                       );
                     },
                   ),
                 ),
-                Text('Computadora', style:
+                const Text('Computadora', style:
                 TextStyle(fontSize: 25, color: Colors.pinkAccent)),
                 Expanded(
                   child: ListView.builder(
@@ -131,8 +137,8 @@ class _GamePageState extends State<GamePage> {
                           child: Container(
                             alignment: Alignment.center,
                             width: 120, // Consistencia en el ancho
-                            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 8), // Consistencia en el padding
-                            child: Text(_game.compu[index].toString(), style: TextStyle(fontSize: 18)),
+                            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 8), // Consistencia en el padding
+                            child: Text(_game.compu[index].toString(), style: const TextStyle(fontSize: 18)),
                           ),
                         ),
                       );
